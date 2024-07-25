@@ -42,5 +42,86 @@ This command will display the account keys, which you can then use to set the en
 export AZURE_STORAGE_ACCOUNT="acc name here" ; export AZURE_STORAGE_KEY="key goes here"
 ```
 
-## Installation
+## Installations
 
+1. Clone the Repo using:
+```bash
+git clone https://github.com/Pusha876/azure-Cloud-Uploader-CLI
+```
+2. Change directory to where the tool is being used:
+```bash
+cd azure-cloud-uploader-CLI
+```
+3. Grant yourself permissions for the azure_uploader.sh script to start using it.
+```bash
+chmod +x azure_uploader.sh
+./azure_uploader.sh
+```
+* After installation, the azure_uploader script command will be available globally in your terminal.
+
+## Usage
+
+To upload a single file to Azure Blob Storage, execute the command below:
+
+```bash
+./azure_uploader.sh /path/to/file
+```
+
+For uploading multiple files to Azure Blob Storage, use the command:
+
+```bash
+./azure_uploader.sh /path/to/file1 /path/to/file2 ...
+```
+
+The following is a demonstration of the tool's capabilities:
+
+![alt text](<uploader successful.png>)
+
+## Troubleshooting Tips😵‍💫
+
+- **Authentication Issues**:
+   - Confirm that your Azure CLI is logged in with `az login` and possesses the required permissions.
+- **Upload Failures**:
+   - Verify the accuracy of the specified file path and your write permissions for the Azure Blob Storage container.
+- **Link Generation Errors**:
+   - Check that your storage account name and container name are correctly set up in the script.
+- **File Not Found Errors**:
+- To handle file paths correctly in the script, you need to ensure that the paths are properly managed and that any relative paths are converted to absolute paths. The following script includes relative paths and providing more informative error messages.
+
+```bash
+# Convert the file path to an absolute path
+FILE_PATH=$(realpath "$FILE_PATH")
+
+# Check if the file exists
+if [ ! -f "$FILE_PATH" ]; then
+    echo "Error: File not found at path: $FILE_PATH"
+    exit 1
+fi
+```
+**Debugging Bash Script**
+```bash
+# Debug: Print initial file path
+echo "Initial file path: $FILE_PATH"
+
+# Debug: Print absolute file path
+echo "Absolute file path: $FILE_PATH"
+
+```
+**Debugging Output**
+
+The script will output the initial and absolute file paths. If the absolute file path does not correspond to a valid file, there might be an issue with how the path is specified or the **'realpath'** command is executed.
+
+1. **Check File Existence Manually**: Ensure the file exists at the specified path by using the ls command:
+```bash
+ls -l /path/to/your/file
+```
+2. **Ensure Correct Path**: Ensure the path provided to the script is correct and the file exists.
+
+1. **Realpath Command**: Verify the **'realpath'** command works as expected:
+
+```bash
+realpath /path/to/your/file
+```
+If `realpath` is not available on your system, you can use an alternative method to get the absolute path.
+
+By adding these debugging steps, you should be able to identify and fix the issue with the file path.![alt text](image.png)
