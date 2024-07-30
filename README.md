@@ -75,7 +75,7 @@ For uploading multiple files to Azure Blob Storage, use the command:
 
 The following is a demonstration of the tool's capabilities:
 
-![alt text](<uploader successful.png>)
+![alt text](<azure_uploader_cli/images/uploader successful.png>)
 
 ## Troubleshooting Tips😵‍💫
 
@@ -124,4 +124,4 @@ realpath /path/to/your/file
 ```
 If `realpath` is not available on your system, you can use an alternative method to get the absolute path.
 
-By adding these debugging steps, you should be able to identify and fix the issue with the file path.![alt text](image.png)
+By adding these debugging steps, you should be able to identify and fix the issue with the file path.!![alt text](azure_uploader_cli/images/image.png)
